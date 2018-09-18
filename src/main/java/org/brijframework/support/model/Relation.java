@@ -6,8 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.brijframework.support.state.State;
-import org.brijframework.util.casting.NullClass;
+import org.brijframework.support.enums.State;
 
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
@@ -18,8 +17,8 @@ public @interface Relation {
 	
 	String mappedBy()  default "";
    
-	Class<?> relative() default NullClass.class; 
+	Class<?> relative() default Object.class; 
 	
-	State referred() default State.AUTO;
+	State referred() default State.ID;
 	
 }

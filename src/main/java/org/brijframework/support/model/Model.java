@@ -7,9 +7,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.brijframework.support.state.Scope;
-import org.brijframework.util.constants.Constants;
-import org.brijframework.util.enums.Access;
+import org.brijframework.support.constants.Constants;
+import org.brijframework.support.enums.Access;
+import org.brijframework.support.enums.Scope;
 
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
@@ -36,4 +36,6 @@ public @interface Model {
 	boolean isUseDefaultMethods() default false;
 	
 	boolean isUseMappedKeys() default false;
+	
+	boolean isDefault() default false;
 }

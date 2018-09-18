@@ -1,4 +1,4 @@
-package org.brijframework.support.state;
+package org.brijframework.support.enums;
 
 public enum Scope {
 

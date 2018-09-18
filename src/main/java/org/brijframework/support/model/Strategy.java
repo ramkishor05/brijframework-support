@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.brijframework.support.state.Formula;
+import org.brijframework.support.enums.Formula;
 
 @Target({ ElementType.FIELD , ElementType.METHOD,ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
