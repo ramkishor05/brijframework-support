@@ -23,13 +23,7 @@ public @interface Property {
 	
 	String value()  default "";
 	
-	/*State referred() default State.AUTO;*/
-	
-  /*  String referedBy()  default "";
-	*/
-	/*Class<?> target()  default Class.class;*/
-	
 	String[] mappedKeys() default {};
 	
-	boolean isRequired() default false;
+	boolean required() default false;
 }

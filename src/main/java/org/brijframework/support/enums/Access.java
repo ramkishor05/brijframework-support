@@ -156,7 +156,16 @@ public enum Access {
 		}
 		return false;
 	}
-
+	
+	public Integer allow(Integer in) {
+		for (Integer id : groupmap.get(this.id)) {
+			if (in.equals(id)) {
+				return id;
+			}
+		}
+		return in;
+	}
+		
 	public Integer getID() {
 		return this.id;
 	}
