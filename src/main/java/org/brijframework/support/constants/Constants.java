@@ -8,7 +8,8 @@ public class Constants {
 	public final static String DEFFER = "~";
 	public final static String SPLIT_DOT = "\\.";
 	public final static String DOT = ".";
-	
+	public final static String OPEN_BRAKET="[";
+	public final static String CLOSE_BRAKET="]";
 	public static final Double ZERO_DOUBLE = Double.valueOf(0.0);
 	public static final Double ONE_DOUBLE = Double.valueOf(1.0);
 	public static final Integer ZERO_INTEGER = Integer.valueOf(0);
