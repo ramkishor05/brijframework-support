@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 import org.brijframework.support.constants.Constants;
 import org.brijframework.support.enums.Access;
 import org.brijframework.support.enums.Scope;
-import org.brijframework.support.enums.State;
+import org.brijframework.support.enums.Wiring;
 
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
@@ -19,20 +19,18 @@ public @interface Relation {
 
 	Access access() default Access.PUBLIC;
 
-	Scope scope() default Scope.prototype;
+	Scope scope() default Scope.PROTOTYPE;
+	
+	Wiring wired() default Wiring.AUTO;
 	
 	String value()  default "";
-	
-	String[] mappedKeys() default {};
-	
-	boolean isRequired() default false;
 	
 	Class<?> mappedTo() default Object.class; 
 	
 	String mappedBy()  default "";
-	
-	State referred() default State.ID;
 
 	boolean required() default false;
+	
+	Query query() default @Query;
 	
 }

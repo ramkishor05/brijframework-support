@@ -2,11 +2,12 @@ package org.brijframework.support.enums;
 
 public enum Scope {
 
-	prototype("prototype"),session("session"),globel("globel"),request("request"),singleton("singleton");
-	
+	PROTOTYPE("PROTOTYPE"), SESSION("SESSION"), GLOBEL("GLOBEL"), REQUEST("REQUEST"), SINGLETON("SINGLETON");
+
 	String id;
+
 	private Scope(String id) {
-		this.id=id;
+		this.id = id;
 	}
-	
+
 }

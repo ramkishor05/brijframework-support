@@ -7,8 +7,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.brijframework.support.constants.Constants;
-import org.brijframework.support.enums.Access;
-import org.brijframework.support.enums.Scope;
 
 @Target({ ElementType.FIELD, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
@@ -16,18 +14,8 @@ import org.brijframework.support.enums.Scope;
 public @interface Mapping {
 
 	String id() default Constants.DEFAULT;
-
-	Access access() default Access.PUBLIC;
-
-	Scope scope() default Scope.prototype;
-
-	String[] mappedKeys() default {};
-
-	boolean isRequired() default false;
 	
-	String mappedBy() default "";
+	String source() default Constants.DEFAULT;
 	
-	Class<?> target() default Object.class;
-	
-	Query query() default @Query;
+	String target() default Constants.DEFAULT;
 }

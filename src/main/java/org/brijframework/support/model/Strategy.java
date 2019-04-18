@@ -15,5 +15,9 @@ public @interface Strategy {
 
 	Formula formula() default Formula.Sequence;
 	
-	double value() default 0.0; 
+	double init() default 0.1; 
+	
+	double increment() default 0.1; 
+	
+	double decrement() default 0.1; 
 }

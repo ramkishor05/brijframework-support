@@ -19,7 +19,7 @@ public @interface Property {
 
 	Access access() default Access.PUBLIC;
 
-	Scope scope() default Scope.prototype;
+	Scope scope() default Scope.PROTOTYPE;
 	
 	String value()  default "";
 	
