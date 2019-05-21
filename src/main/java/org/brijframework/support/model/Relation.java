@@ -6,10 +6,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.brijframework.support.constants.Constants;
-import org.brijframework.support.enums.Access;
 import org.brijframework.support.enums.Scope;
 import org.brijframework.support.enums.Wiring;
+import org.brijframework.util.support.Access;
+import org.brijframework.util.support.Constants;
 
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)

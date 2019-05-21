@@ -6,16 +6,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.brijframework.util.support.Constants;
-
-@Target({ ElementType.FIELD, ElementType.METHOD })
+@Target({ ElementType.METHOD, ElementType.CONSTRUCTOR })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Mapping {
+public @interface Assignable {
 
-	String id() default Constants.DEFAULT;
-	
-	String source() default Constants.DEFAULT;
-	
-	String target() default Constants.DEFAULT;
+	Class<?> depandOn() default Object.class;
 }
