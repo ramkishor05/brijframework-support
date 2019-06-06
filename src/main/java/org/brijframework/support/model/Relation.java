@@ -5,6 +5,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.lang.reflect.Type;
 
 import org.brijframework.support.enums.Scope;
 import org.brijframework.support.enums.Wiring;
@@ -32,5 +33,7 @@ public @interface Relation {
 	boolean required() default false;
 	
 	Query query() default @Query;
+	
+	Class<?> type() default Type.class;
 	
 }
