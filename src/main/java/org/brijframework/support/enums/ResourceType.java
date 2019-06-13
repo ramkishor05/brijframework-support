@@ -1,14 +1,10 @@
 package org.brijframework.support.enums;
 
-public enum ResourceType {
-    JSON("json"),XML("xml"),PDF("pdf"),XSL("xsl"),DOC("doc"),HASH("hash");
-	private String id;
-	private ResourceType(String id) {
-		this.id=id;
-	}
-	
-	@Override
-	public String toString() {
-		return id;
-	}
+public class ResourceType {
+	public static final String JSON = "json";
+	public static final String XML = "xml";
+	public static final String PDF = "pdf";
+	public static final String XSL = "xsl";
+	public static final String DOC = "doc";
+	public static final String HASH = "hash";
 }
