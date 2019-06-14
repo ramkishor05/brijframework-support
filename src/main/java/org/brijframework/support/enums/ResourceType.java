@@ -8,4 +8,6 @@ public class ResourceType {
 	public static final String DOC = "doc";
 	public static final String HASH = "hash";
 	public static final String PROP = "properties";
+	public static final String YAML = "yaml";
+	public static final String YML = "yml";
 }
