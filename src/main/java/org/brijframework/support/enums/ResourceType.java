@@ -7,4 +7,5 @@ public class ResourceType {
 	public static final String XSL = "xsl";
 	public static final String DOC = "doc";
 	public static final String HASH = "hash";
+	public static final String PROP = "properties";
 }
