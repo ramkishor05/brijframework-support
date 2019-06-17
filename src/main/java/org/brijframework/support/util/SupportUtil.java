@@ -1,8 +1,7 @@
 package org.brijframework.support.util;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
+import java.util.LinkedHashSet;
 
 import org.brijframework.container.Container;
 import org.brijframework.context.Context;
@@ -11,9 +10,17 @@ import org.brijframework.support.model.DepandOn;
 
 public class SupportUtil {
    
-	public static Collection<Class<? extends Context>> getDepandOnSortedClassList(Collection<Class<? extends Context>> classList) {
-		ArrayList<Class<? extends Context>> list=new ArrayList<Class<? extends Context>>();
-		classList.forEach(context->{
+	public static Collection<Class<? extends Context>> getDepandOnSortedClassList(LinkedHashSet<Class<? extends Context>> classList) {
+		LinkedHashSet<Class<? extends Context>> list=new LinkedHashSet<Class<? extends Context>>();
+		classList.stream().sorted((c1,c2)->{
+			if(c1.isAnnotationPresent(DepandOn.class)) {
+				return -1;
+			}
+			if(c2.isAnnotationPresent(DepandOn.class)) {
+				return 1;
+			}
+			return 0;
+		}).forEach(context->{
 			if(!list.contains(context))
 			fillDepandOn(list,context);
 		});
@@ -21,7 +28,7 @@ public class SupportUtil {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static void fillDepandOn(Collection<Class<? extends Context>> list, Class<? extends Context> context) {
+	public static void fillDepandOn(LinkedHashSet<Class<? extends Context>> list, Class<? extends Context> context) {
 		if (context.isAnnotationPresent(DepandOn.class)) {
 			DepandOn depandOn = context.getAnnotation(DepandOn.class);
 			fillDepandOn(list,(Class<? extends Context> ) depandOn.depand());
@@ -31,40 +38,55 @@ public class SupportUtil {
 	}
 	
 
-	public static Collection<Class<? extends Container>> getDepandOnSortedClassList(Set<Class<? extends Container>> classList) {
-		ArrayList<Class<? extends Container>> list=new ArrayList<Class<? extends Container>>();
-		classList.forEach(context->{
-			if(!list.contains(context))
-			fillDepandOn(list,context);
+	public static LinkedHashSet<Class<? extends Container>> getDepandOnSortedContainerClassList(LinkedHashSet<Class<? extends Container>> classList) {
+		LinkedHashSet<Class<? extends Container>> list=new LinkedHashSet<Class<? extends Container>>();
+		classList.stream().sorted((c1,c2)->{
+			if(c1.isAnnotationPresent(DepandOn.class)) {
+				return -1;
+			}
+			if(c2.isAnnotationPresent(DepandOn.class)) {
+				return 1;
+			}
+			return 0;
+		}).forEach(container->{
+			if(!list.contains(container))
+			fillDepandOnContainer(list,container);
 		});
-		return classList;
+		return list;
 	}
 	
 	@SuppressWarnings("unchecked")
-	private static void fillDepandOn(ArrayList<Class<? extends Container>> list, Class<? extends Container> context) {
-		if (context.isAnnotationPresent(DepandOn.class)) {
-			DepandOn depandOn = context.getAnnotation(DepandOn.class);
-			fillDepandOn(list,(Class<? extends Container> ) depandOn.depand());
+	private static void fillDepandOnContainer(LinkedHashSet<Class<? extends Container>> list, Class<? extends Container> container) {
+		if (container.isAnnotationPresent(DepandOn.class)) {
+			DepandOn depandOn = container.getAnnotation(DepandOn.class);
+			fillDepandOnContainer(list,(Class<? extends Container> ) depandOn.depand());
 		}
-		if(!list.contains(context))
-		list.add(context);
-		
+		if(!list.contains(container))
+		list.add(container);
 	}
 
-	public static Collection<Class<? extends Factory>> getDepandOnSortedClassFactoryList(Collection<Class<? extends Factory>> classList) {
-		ArrayList<Class<? extends Factory>> list=new ArrayList<Class<? extends Factory>>();
-		classList.forEach(context->{
-			if(!list.contains(context))
-			fillDepandOnFactory(list,context);
+	public static LinkedHashSet<Class<? extends Factory>> getDepandOnSortedClassFactoryList(LinkedHashSet<Class<? extends Factory>> classList) {
+		LinkedHashSet<Class<? extends Factory>> list=new LinkedHashSet<Class<? extends Factory>>();
+		classList.stream().sorted((c1,c2)->{
+			if(c1.isAnnotationPresent(DepandOn.class)) {
+				return -1;
+			}
+			if(c2.isAnnotationPresent(DepandOn.class)) {
+				return 1;
+			}
+			return 0;
+		}).forEach(factory->{
+			if(!list.contains(factory))
+			fillDepandOnFactory(list,factory);
 		});
-		return classList;
+		return list;
 	}
 	
 	@SuppressWarnings("unchecked")
 	private static void fillDepandOnFactory(Collection<Class<? extends Factory>> list, Class<? extends Factory> factory) {
 		if (factory.isAnnotationPresent(DepandOn.class)) {
 			DepandOn depandOn = factory.getAnnotation(DepandOn.class);
-			fillDepandOnFactory(list,(Class<? extends Factory> ) depandOn.depand());
+			fillDepandOnFactory(list,( Class<? extends Factory> ) depandOn.depand());
 		}
 		if(!list.contains(factory))
 		list.add(factory);
