@@ -7,13 +7,9 @@ import java.lang.annotation.Target;
 
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = { ElementType.TYPE })
-public @interface Config {
+public @interface BootStrapConfig {
    
-	String[] packages() default {};
+	public String location();
 	
-	String appPath() default "META-INF/application.xml";
-	
-	public String metaPath() default "META-INF/application.xml";
-	
-	public String filePath() default "";
+	public String filename();
 }
