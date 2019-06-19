@@ -1,6 +1,5 @@
 package org.brijframework.support.util;
 
-import java.util.Collection;
 import java.util.LinkedHashSet;
 
 import org.brijframework.container.Container;
@@ -10,18 +9,18 @@ import org.brijframework.support.model.DepandOn;
 
 public class SupportUtil {
    
-	public static Collection<Class<? extends Context>> getDepandOnSortedClassList(LinkedHashSet<Class<? extends Context>> classList) {
+	public static LinkedHashSet<Class<? extends Context>> getDepandOnSortedClassList(LinkedHashSet<Class<? extends Context>> classList) {
+		
 		LinkedHashSet<Class<? extends Context>> list=new LinkedHashSet<Class<? extends Context>>();
 		classList.stream().sorted((c1,c2)->{
 			if(c1.isAnnotationPresent(DepandOn.class)) {
 				return -1;
 			}
 			if(c2.isAnnotationPresent(DepandOn.class)) {
-				return 1;
+				return  1;
 			}
 			return 0;
 		}).forEach(context->{
-			if(!list.contains(context))
 			fillDepandOn(list,context);
 		});
 		return list;
@@ -29,12 +28,16 @@ public class SupportUtil {
 	
 	@SuppressWarnings("unchecked")
 	public static void fillDepandOn(LinkedHashSet<Class<? extends Context>> list, Class<? extends Context> context) {
+		if(context==null) {
+			return;
+		}
 		if (context.isAnnotationPresent(DepandOn.class)) {
 			DepandOn depandOn = context.getAnnotation(DepandOn.class);
 			fillDepandOn(list,(Class<? extends Context> ) depandOn.depand());
 		}
-		if(!list.contains(context))
-		list.add(context);
+		if(!list.contains(context)) {
+			list.add(context);
+		}
 	}
 	
 
@@ -49,7 +52,6 @@ public class SupportUtil {
 			}
 			return 0;
 		}).forEach(container->{
-			if(!list.contains(container))
 			fillDepandOnContainer(list,container);
 		});
 		return list;
@@ -57,12 +59,16 @@ public class SupportUtil {
 	
 	@SuppressWarnings("unchecked")
 	private static void fillDepandOnContainer(LinkedHashSet<Class<? extends Container>> list, Class<? extends Container> container) {
+		if(container==null) {
+			return;
+		}
 		if (container.isAnnotationPresent(DepandOn.class)) {
 			DepandOn depandOn = container.getAnnotation(DepandOn.class);
 			fillDepandOnContainer(list,(Class<? extends Container> ) depandOn.depand());
 		}
-		if(!list.contains(container))
-		list.add(container);
+		if(!list.contains(container)) {
+		  list.add(container);
+		}
 	}
 
 	public static LinkedHashSet<Class<? extends Factory>> getDepandOnSortedClassFactoryList(LinkedHashSet<Class<? extends Factory>> classList) {
@@ -72,24 +78,27 @@ public class SupportUtil {
 				return -1;
 			}
 			if(c2.isAnnotationPresent(DepandOn.class)) {
-				return 1;
+				return  1;
 			}
 			return 0;
 		}).forEach(factory->{
-			if(!list.contains(factory))
 			fillDepandOnFactory(list,factory);
 		});
 		return list;
 	}
 	
 	@SuppressWarnings("unchecked")
-	private static void fillDepandOnFactory(Collection<Class<? extends Factory>> list, Class<? extends Factory> factory) {
+	private static void fillDepandOnFactory(LinkedHashSet<Class<? extends Factory>> list, Class<? extends Factory> factory) {
+		if(factory==null) {
+			return;
+		}
 		if (factory.isAnnotationPresent(DepandOn.class)) {
 			DepandOn depandOn = factory.getAnnotation(DepandOn.class);
 			fillDepandOnFactory(list,( Class<? extends Factory> ) depandOn.depand());
 		}
-		if(!list.contains(factory))
-		list.add(factory);
-		
+		if(!list.contains(factory)) {
+			list.add(factory);
+		}
 	}
+
 }
