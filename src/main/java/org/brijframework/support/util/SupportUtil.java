@@ -5,7 +5,7 @@ import java.util.LinkedHashSet;
 import org.brijframework.container.Container;
 import org.brijframework.context.Context;
 import org.brijframework.factories.Factory;
-import org.brijframework.support.model.DepandOn;
+import org.brijframework.support.config.DepandOn;
 
 public class SupportUtil {
    

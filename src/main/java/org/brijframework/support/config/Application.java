@@ -7,9 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = { ElementType.TYPE })
-public @interface BootStrapConfig {
+public @interface Application {
    
-	public String location();
-	
-	public String filename();
+	public String paths() default ApplicationConstants.APPLICATION_BOOTSTRAP_CONFIG_FILES;
 }

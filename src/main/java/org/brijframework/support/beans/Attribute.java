@@ -1,4 +1,4 @@
-package org.brijframework.support.model;
+package org.brijframework.support.beans;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
