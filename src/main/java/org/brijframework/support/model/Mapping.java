@@ -15,7 +15,7 @@ public @interface Mapping {
 
 	String id() default Constants.DEFAULT;
 	
-	String source() default Constants.DEFAULT;
+	String source();
 	
-	String target() default Constants.DEFAULT;
+	String destination() default Constants.DEFAULT;
 }

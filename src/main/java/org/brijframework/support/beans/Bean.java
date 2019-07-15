@@ -20,7 +20,9 @@ public @interface Bean {
 
 	Scope scope() default Scope.SINGLETON;
 	
-	String model();
+	String model() default "";
+	
+	String type() default Constants.DEFAULT;
 
 	String name() default Constants.DEFAULT;
 	
