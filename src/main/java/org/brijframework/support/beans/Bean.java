@@ -8,6 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.brijframework.support.enums.Scope;
+import org.brijframework.support.model.Construct;
 import org.brijframework.util.support.Constants;
 
 @Target({ ElementType.TYPE })
@@ -28,4 +29,5 @@ public @interface Bean {
 	
 	Attribute[] properties();
 	
+	Construct constructor() default @Construct;
 }
