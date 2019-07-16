@@ -16,8 +16,4 @@ import org.brijframework.util.support.Constants;
 public @interface BeanMapper {
 
 	String id() default Constants.DEFAULT;
-
-	String source();
-
-	String destination() default Constants.DEFAULT;
 }
