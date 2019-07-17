@@ -1,4 +1,4 @@
-package org.brijframework.support.model.mapper;
+package org.brijframework.support.mapper;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BeanMappers {
+public @interface Mappers {
 
-	BeanMapper[] value();
+	Mapper[] value();
 }

@@ -1,4 +1,4 @@
-package org.brijframework.support.model.mapper;
+package org.brijframework.support.mapper;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -9,11 +9,15 @@ import java.lang.annotation.Target;
 
 import org.brijframework.util.support.Constants;
 
-@Target({ ElementType.TYPE })
+@Target({ ElementType.TYPE, ElementType.FIELD, ElementType.METHOD , ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Repeatable(value = BeanMappers.class)
-public @interface BeanMapper {
+@Repeatable(value = Mappers.class)
+public @interface Mapper {
 
 	String id() default Constants.DEFAULT;
+
+	String source();
+
+	String target() default Constants.DEFAULT;
 }
