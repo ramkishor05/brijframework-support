@@ -19,5 +19,5 @@ public @interface Mapper {
 
 	String source();
 
-	String target() default Constants.DEFAULT;
+	String destination() default Constants.DEFAULT;
 }
