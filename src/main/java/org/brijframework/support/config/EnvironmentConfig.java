@@ -7,7 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = { ElementType.TYPE })
-public @interface ApplicationBootstrap {
-   
+public @interface EnvironmentConfig {
 	public String paths() default SupportConstants.APPLICATION_BOOTSTRAP_CONFIG_FILES;
 }

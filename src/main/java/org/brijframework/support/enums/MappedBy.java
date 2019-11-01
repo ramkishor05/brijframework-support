@@ -1,5 +1,5 @@
 package org.brijframework.support.enums;
 
-public enum Wiring {
+public enum MappedBy {
 	CLASS, ID, NAME, NO, AUTO;
 }
