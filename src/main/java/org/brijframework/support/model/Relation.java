@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Type;
 
-import org.brijframework.support.enums.Wiring;
+import org.brijframework.support.enums.MappedBy;
 import org.brijframework.util.support.Access;
 import org.brijframework.util.support.Constants;
 
@@ -19,7 +19,7 @@ public @interface Relation {
 
 	Access access() default Access.PUBLIC;
 
-	Wiring wired() default Wiring.AUTO;
+	MappedBy wired() default MappedBy.AUTO;
 	
 	String mappedBy()  default "";
 
