@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Target(value = { ElementType.TYPE })
 public @interface DatasourceBootstrap {
 
-	public String paths() default SupportConstants.DATASOURCE_BOOTSTRAP_CONFIG_FILES;
+	public String paths() default SupportConstants.DATASOURCE_CONFIGRATION_FILE_NAMES;
 }

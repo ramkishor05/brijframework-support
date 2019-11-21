@@ -1,13 +1,16 @@
 package org.brijframework.support.config;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Retention(value = RetentionPolicy.RUNTIME)
-@Target(value = { ElementType.TYPE })
-public @interface EnvironmentConfig {
-	
-	public String paths() default SupportConstants.APPLICATION_CONFIGRATION_FILE_NAMES;
+@Target({ ElementType.METHOD })
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface AssignForKey {
+
+	String value();
+
 }

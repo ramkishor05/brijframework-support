@@ -8,6 +8,8 @@ import org.brijframework.context.BootstrapContext;
 import org.brijframework.context.ModuleContext;
 import org.brijframework.factories.Factory;
 import org.brijframework.support.config.DepandOn;
+import org.brijframework.support.config.OrderOn;
+import org.brijframework.util.reflect.AnnotationUtil;
 
 public class SupportUtil {
    
@@ -174,4 +176,21 @@ public class SupportUtil {
 			list.add(factory);
 		}
 	}
+
+	public static Iterable<Class<? extends Factory>> getOrderOnSortedFactoryList(LinkedHashSet<Class<? extends Factory>> classList) {
+		LinkedHashSet<Class<? extends Factory>> list=new LinkedHashSet<Class<? extends Factory>>();
+		classList.stream().filter(c->c.isAnnotationPresent(OrderOn.class)).sorted((c1,c2)->{
+			OrderOn orderOn1=(OrderOn) AnnotationUtil.getAnnotation(c1, OrderOn.class);
+			OrderOn orderOn2=(OrderOn) AnnotationUtil.getAnnotation(c2, OrderOn.class);
+			return Integer.compare(orderOn1.value(), orderOn2.value());
+		}).forEach(factory->{
+			list.add(factory);
+		});
+		
+		classList.stream().filter(c-> !c.isAnnotationPresent(OrderOn.class)).forEach(factory->{
+			list.add(factory);
+		});
+		return list;
+	}
+	
 }
