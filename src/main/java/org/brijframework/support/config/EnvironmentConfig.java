@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Target(value = { ElementType.TYPE })
 public @interface EnvironmentConfig {
 	
-	public String paths() default SupportConstants.APPLICATION_CONFIGRATION_FILE_NAMES;
+	public String paths() default SupportConstants.APPLICATION_ENVIRONMENT_RESOURCE_FILE_NAMES;
 }

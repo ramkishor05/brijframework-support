@@ -12,10 +12,10 @@ import org.brijframework.support.config.SupportConstants;
 @Target({ ElementType.METHOD,ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface ApplicationConfigration {
+public @interface EnvironmentResource {
 	
-	@AssignForKey(SupportConstants.APPLICATION_CONFIGRATION_PATH_KEY)
-	String location() default SupportConstants.APPLICATION_CONFIGRATION_PATH_VAL;
+	@AssignForKey(SupportConstants.APPLICATION_ENVIRONMENT_RESOURCE_PATH_KEY)
+	String location() default SupportConstants.APPLICATION_ENVIRONMENT_RESOURCE_PATH_VAL;
 	
-	String[] value() default {SupportConstants.APPLICATION_CONFIGRATION_FILE_NAMES};
+	String value() default SupportConstants.APPLICATION_ENVIRONMENT_RESOURCE_FILE_NAMES;
 }

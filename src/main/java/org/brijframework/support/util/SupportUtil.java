@@ -2,14 +2,11 @@ package org.brijframework.support.util;
 
 import java.util.LinkedHashSet;
 
-import org.brijframework.container.BootstrapContainer;
-import org.brijframework.container.ModuleContainer;
-import org.brijframework.context.BootstrapContext;
-import org.brijframework.context.ModuleContext;
-import org.brijframework.factories.Factory;
+import org.brijframework.container.bootstrap.BootstrapContainer;
+import org.brijframework.container.module.ModuleContainer;
+import org.brijframework.context.bootstrap.BootstrapContext;
+import org.brijframework.context.module.ModuleContext;
 import org.brijframework.support.config.DepandOn;
-import org.brijframework.support.config.OrderOn;
-import org.brijframework.util.reflect.AnnotationUtil;
 
 public class SupportUtil {
    
@@ -147,50 +144,5 @@ public class SupportUtil {
 		}
 	}
 
-	public static LinkedHashSet<Class<? extends Factory>> getDepandOnSortedFactoryList(LinkedHashSet<Class<? extends Factory>> classList) {
-		LinkedHashSet<Class<? extends Factory>> list=new LinkedHashSet<Class<? extends Factory>>();
-		classList.stream().sorted((c1,c2)->{
-			if(c1.isAnnotationPresent(DepandOn.class)) {
-				return -1;
-			}
-			if(c2.isAnnotationPresent(DepandOn.class)) {
-				return  1;
-			}
-			return 0;
-		}).forEach(factory->{
-			fillDepandOnFactory(list,factory);
-		});
-		return list;
-	}
-	
-	@SuppressWarnings("unchecked")
-	private static void fillDepandOnFactory(LinkedHashSet<Class<? extends Factory>> list, Class<? extends Factory> factory) {
-		if(factory==null) {
-			return;
-		}
-		if (factory.isAnnotationPresent(DepandOn.class)) {
-			DepandOn depandOn = factory.getAnnotation(DepandOn.class);
-			fillDepandOnFactory(list,( Class<? extends Factory> ) depandOn.depand());
-		}
-		if(!list.contains(factory)) {
-			list.add(factory);
-		}
-	}
-
-	public static Iterable<Class<? extends Factory>> getOrderOnSortedFactoryList(LinkedHashSet<Class<? extends Factory>> classList) {
-		LinkedHashSet<Class<? extends Factory>> list=new LinkedHashSet<Class<? extends Factory>>();
-		classList.stream().filter(c->c.isAnnotationPresent(OrderOn.class)).sorted((c1,c2)->{
-			OrderOn orderOn1=(OrderOn) AnnotationUtil.getAnnotation(c1, OrderOn.class);
-			OrderOn orderOn2=(OrderOn) AnnotationUtil.getAnnotation(c2, OrderOn.class);
-			return Integer.compare(orderOn1.value(), orderOn2.value());
-		}).forEach(factory->{
-			list.add(factory);
-		});
-		
-		classList.stream().filter(c-> !c.isAnnotationPresent(OrderOn.class)).forEach(factory->{
-			list.add(factory);
-		});
-		return list;
-	}
 	
 }
