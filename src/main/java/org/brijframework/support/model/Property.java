@@ -21,8 +21,6 @@ public @interface Property {
 
 	String value()  default "";
 	
-	String[] mappedKeys() default {};
-	
 	boolean required() default false;
 	
 	Class<?> type() default Type.class;
