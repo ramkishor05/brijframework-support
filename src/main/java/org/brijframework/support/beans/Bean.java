@@ -18,7 +18,7 @@ import org.brijframework.util.support.Constants;
 @Repeatable(value = Beans.class)
 public @interface Bean {
 
-	String id();
+	String id() default Constants.DEFAULT;
 
 	Scope scope() default Scope.SINGLETON;
 	
@@ -28,7 +28,7 @@ public @interface Bean {
 
 	String name() default Constants.DEFAULT;
 	
-	Attribute[] properties();
+	Attribute[] properties() default {};
 	
 	Construct constructor() default @Construct;
 	

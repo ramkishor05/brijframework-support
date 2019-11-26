@@ -23,4 +23,8 @@ public @interface Model {
 	String extend() default Constants.DEFAULT;
 	
 	Construct constructor() default @Construct;
+	
+	Property[] properties() default {};
+	
+	Relation[] relations() default {};
 }
