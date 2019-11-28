@@ -22,7 +22,7 @@ public @interface Bean {
 
 	Scope scope() default Scope.SINGLETON;
 	
-	String model() default "";
+	String model() default Constants.DEFAULT;
 	
 	String type() default Constants.DEFAULT;
 
@@ -33,4 +33,8 @@ public @interface Bean {
 	Construct constructor() default @Construct;
 	
 	Mapper[] mappers() default {};
+
+	String factoryMethod() default Constants.DEFAULT;
+
+	String factoryClass() default Constants.DEFAULT;
 }
