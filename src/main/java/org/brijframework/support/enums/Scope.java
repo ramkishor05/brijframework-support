@@ -10,15 +10,19 @@ public enum Scope {
 	GROUP("GROUP"),
 	CUSTOM("CUSTOM");
 
-	String id;
+	String name;
 
-	private Scope(String id) {
-		this.id = id;
+	private Scope(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	public static Scope valueFor(String scope) {
 		for(Scope scpe:values()) {
-			if(scpe.id.equalsIgnoreCase(scope)) {
+			if(scpe.name.equalsIgnoreCase(scope)) {
 				return scpe;
 			}
 		}
@@ -33,4 +37,5 @@ public enum Scope {
 		return singleton;
 	}
 
+	
 }

@@ -19,6 +19,8 @@ public @interface Model {
 	String id() default Constants.DEFAULT;
 
 	Access access() default Access.PUBLIC;
+	
+	String name() default Constants.DEFAULT;
 
 	String extend() default Constants.DEFAULT;
 	

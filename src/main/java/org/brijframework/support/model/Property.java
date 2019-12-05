@@ -16,10 +16,12 @@ import org.brijframework.util.support.Constants;
 public @interface Property {
 	
 	String id() default Constants.DEFAULT;
+	
+	String name() default Constants.DEFAULT;
 
 	Access access() default Access.PUBLIC;
 
-	String value()  default "";
+	String value()  default Constants.DEFAULT;
 	
 	boolean required() default false;
 	
