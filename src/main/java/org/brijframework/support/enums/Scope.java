@@ -37,5 +37,14 @@ public enum Scope {
 		return singleton;
 	}
 
+	public boolean equalsIgnoreCase(Scope scope) {
+		for(Scope scop:values()) {
+			if(scop.getName().equalsIgnoreCase(scope.getName())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	
 }
