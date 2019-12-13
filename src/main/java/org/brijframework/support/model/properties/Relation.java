@@ -1,4 +1,4 @@
-package org.brijframework.support.model;
+package org.brijframework.support.model.properties;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -6,23 +6,26 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.brijframework.support.enums.Scope;
-import org.brijframework.support.model.queries.Param;
 import org.brijframework.util.support.Access;
 import org.brijframework.util.support.Constants;
 
-@Target({ ElementType.TYPE,ElementType.CONSTRUCTOR })
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Construct {
-   
+public @interface Relation {
+	
 	String id() default Constants.DEFAULT;
 
+	String name() default Constants.DEFAULT;
+	
 	Access access() default Access.PUBLIC;
+	
+	String value()  default Constants.DEFAULT;
 
-	Scope scope() default Scope.PROTOTYPE;
+	String mappedBy()  default Constants.DEFAULT;
+
+	boolean required() default false;
 	
-	String extend() default Constants.NULL;
+	//Query query() default @Query;
 	
-	Param[] params()  default {};
 }

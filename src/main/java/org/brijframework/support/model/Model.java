@@ -7,6 +7,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.brijframework.support.model.properties.Property;
+import org.brijframework.support.model.properties.Relation;
 import org.brijframework.util.support.Access;
 import org.brijframework.util.support.Constants;
 

@@ -6,7 +6,7 @@ import org.brijframework.container.bootstrap.BootstrapContainer;
 import org.brijframework.container.module.ModuleContainer;
 import org.brijframework.context.bootstrap.BootstrapContext;
 import org.brijframework.context.module.ModuleContext;
-import org.brijframework.support.config.DepandOn;
+import org.brijframework.support.ordering.DepandOn;
 
 public class SupportUtil {
    

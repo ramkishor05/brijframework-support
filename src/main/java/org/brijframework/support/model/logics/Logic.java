@@ -1,4 +1,4 @@
-package org.brijframework.support.model;
+package org.brijframework.support.model.logics;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -11,18 +11,18 @@ import org.brijframework.support.model.queries.Param;
 import org.brijframework.util.support.Access;
 import org.brijframework.util.support.Constants;
 
-@Target({ ElementType.TYPE,ElementType.CONSTRUCTOR })
+@Target({ ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Construct {
-   
+public @interface Logic {
+
 	String id() default Constants.DEFAULT;
 
 	Access access() default Access.PUBLIC;
 
 	Scope scope() default Scope.PROTOTYPE;
 	
-	String extend() default Constants.NULL;
-	
 	Param[] params()  default {};
+	
+	String[] mappedKeys() default {};
 }
