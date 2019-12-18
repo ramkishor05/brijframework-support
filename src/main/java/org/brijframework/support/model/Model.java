@@ -7,9 +7,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.brijframework.support.model.properties.Property;
-import org.brijframework.support.model.properties.Relation;
-import org.brijframework.util.support.Access;
+import org.brijframework.Access;
+import org.brijframework.support.model.properties.ModelProperty;
+import org.brijframework.support.model.properties.ModelRelation;
 import org.brijframework.util.support.Constants;
 
 @Target({ ElementType.TYPE })
@@ -20,15 +20,15 @@ public @interface Model {
 	
 	String id() default Constants.DEFAULT;
 
-	Access access() default Access.PUBLIC;
+	Access access() default Access.READ_WRITE;
 	
 	String name() default Constants.DEFAULT;
 
 	String extend() default Constants.DEFAULT;
 	
-	Construct constructor() default @Construct;
+	ModelConstruct constructor() default @ModelConstruct;
 	
-	Property[] properties() default {};
+	ModelProperty[] properties() default {};
 	
-	Relation[] relations() default {};
+	ModelRelation[] relations() default {};
 }

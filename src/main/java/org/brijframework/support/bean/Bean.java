@@ -7,9 +7,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.brijframework.support.bean.attributes.Attribute;
+import org.brijframework.support.bean.properties.BeanProperty;
 import org.brijframework.support.enums.Scope;
-import org.brijframework.support.model.Construct;
 import org.brijframework.support.model.mapper.ModelMapper;
 import org.brijframework.util.support.Constants;
 
@@ -29,9 +28,9 @@ public @interface Bean {
 
 	String name() default Constants.DEFAULT;
 	
-	Attribute[] properties() default {};
+	BeanProperty[] properties() default {};
 	
-	Construct constructor() default @Construct;
+	BeanConstruct constructor() default @BeanConstruct;
 	
 	ModelMapper[] mappers() default {};
 

@@ -5,25 +5,27 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.lang.reflect.Type;
 
-import org.brijframework.util.support.Access;
+import org.brijframework.Access;
 import org.brijframework.util.support.Constants;
 
-@Target({ ElementType.FIELD , ElementType.METHOD })
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Property {
+public @interface ModelRelation {
 	
 	String id() default Constants.DEFAULT;
-	
+
 	String name() default Constants.DEFAULT;
-
-	Access access() default Access.PUBLIC;
-
-	String value()  default Constants.DEFAULT;
 	
+	Access access() default Access.READ_WRITE;
+	
+	String value()  default Constants.DEFAULT;
+
+	String mappedBy()  default Constants.DEFAULT;
+
 	boolean required() default false;
 	
-	Class<?> type() default Type.class;
+	//Query query() default @Query;
+	
 }
