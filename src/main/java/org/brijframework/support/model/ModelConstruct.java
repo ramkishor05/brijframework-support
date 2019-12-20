@@ -7,7 +7,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.brijframework.Access;
-import org.brijframework.support.model.queries.Param;
 import org.brijframework.util.support.Constants;
 
 @Target({ ElementType.TYPE,ElementType.CONSTRUCTOR })
@@ -19,5 +18,5 @@ public @interface ModelConstruct {
 
 	Access access() default Access.READ_WRITE;
 	
-	Param[] params()  default {};
+	ModelParam[] params()  default {};
 }

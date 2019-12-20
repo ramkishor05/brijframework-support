@@ -21,8 +21,6 @@ public @interface ModelProperty {
 
 	Access access() default Access.READ_WRITE;
 
-	String value()  default Constants.DEFAULT;
-	
 	boolean required() default false;
 	
 	Class<?> type() default Type.class;
