@@ -12,7 +12,6 @@ import java.lang.annotation.Target;
 public @interface BeanParam {
  
    int index();
-   Class<?> type() default Object.class;
    String name() default "";
    String value() default "";
 }

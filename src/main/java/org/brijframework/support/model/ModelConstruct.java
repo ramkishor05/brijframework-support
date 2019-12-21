@@ -15,6 +15,8 @@ import org.brijframework.util.support.Constants;
 public @interface ModelConstruct {
    
 	String id() default Constants.DEFAULT;
+	
+	String name() default Constants.DEFAULT;
 
 	Access access() default Access.READ_WRITE;
 	
