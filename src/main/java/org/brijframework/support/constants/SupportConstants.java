@@ -5,6 +5,7 @@ public class SupportConstants {
 	public static final String APPLICATION_RESOURCE_PACKAGES_PATH_KEY="application.resource.packages";
 	public static final String APPLICATION_RESOURCE_FILES_PATH_KEY="application.resource.files";
 	public static final String APPLICATION_ENVIRONMENT_RESOURCE_PATH_KEY="application.environment.location";
+	public static final String APPLICATION_ENVIRONMENT_RESOURCE_FILES_KEY="application.environment.files";
 	public static final String APPLICATION_ENVIRONMENT_RESOURCE_PATH_VAL="classpath:";
 	public static final String APPLICATION_ENVIRONMENT_RESOURCE_FILE_NAMES="application-environment.properties|application-environment.yaml|application-environment.yml|application-environment.xml";
 	
